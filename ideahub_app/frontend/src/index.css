@@ -1,0 +1,640 @@
+@import "tailwindcss";
+
+/* ========================================
+   Memphis Design System - IdeaHub
+   孟菲斯设计风格基础设计系统
+   ======================================== */
+
+/* ========================================
+   1. CSS 变量定义
+   ======================================== */
+:root {
+  /* Memphis 配色 */
+  --memphis-primary: #FF6B6B;     /* 珊瑚红 */
+  --memphis-secondary: #4ECDC4;   /* 薄荷绿 */
+  --memphis-accent1: #FFE66D;     /* 明黄 */
+  --memphis-accent2: #95E1D3;     /* 浅青 */
+  --memphis-accent3: #F38181;     /* 粉红 */
+  --memphis-accent4: #AA96DA;     /* 薰衣草紫 */
+  --memphis-accent5: #6C5CE7;     /* 电光紫 */
+  --memphis-dark: #2C3E50;        /* 深蓝灰 */
+  --memphis-bg: #FFF8F0;          /* 暖白 */
+  --memphis-bg-alt: #FFEAA7;      /* 浅黄 */
+  --memphis-border: #2C3E50;      /* 粗边框色 */
+  
+  /* 功能色 - 孟菲斯版 */
+  --memphis-success: #00B894;
+  --memphis-warning: #FDCB6E;
+  --memphis-error: #E17055;
+  --memphis-info: #74B9FF;
+  
+  /* 间距和圆角 */
+  --memphis-radius: 12px;
+  --memphis-radius-lg: 20px;
+  --memphis-border-width: 3px;
+  --memphis-shadow-offset: 4px;
+}
+
+/* ========================================
+   2. 几何背景图案（CSS only）
+   ======================================== */
+
+/* 点阵纹理背景 */
+.memphis-dot-pattern {
+  background-image: radial-gradient(circle, var(--memphis-dark) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* 柔和点阵（用于大面积背景） */
+.memphis-dot-pattern-soft {
+  background-image: radial-gradient(circle, rgba(44, 62, 80, 0.1) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* 斜线条纹背景 */
+.memphis-stripe-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(44, 62, 80, 0.1) 10px,
+    rgba(44, 62, 80, 0.1) 12px
+  );
+}
+
+/* 彩色斜线条纹 */
+.memphis-stripe-pattern-colorful {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(255, 107, 107, 0.15) 8px,
+    rgba(255, 107, 107, 0.15) 10px,
+    transparent 10px,
+    transparent 18px,
+    rgba(78, 205, 196, 0.15) 18px,
+    rgba(78, 205, 196, 0.15) 20px
+  );
+}
+
+/* 网格背景 */
+.memphis-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(44, 62, 80, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 62, 80, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ========================================
+   3. 卡片组件
+   ======================================== */
+.memphis-card {
+  background: white;
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+  border-radius: var(--memphis-radius);
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-dark);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.memphis-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--memphis-dark);
+}
+
+/* 彩色阴影卡片变体 */
+.memphis-card-primary {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-primary);
+}
+
+.memphis-card-secondary {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-secondary);
+}
+
+.memphis-card-accent {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-accent1);
+}
+
+/* ========================================
+   4. 按钮组件
+   ======================================== */
+.memphis-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+  border-radius: var(--memphis-radius);
+  font-weight: 700;
+  padding: 8px 20px;
+  box-shadow: 3px 3px 0 var(--memphis-dark);
+  transition: all 0.15s;
+  cursor: pointer;
+  background: white;
+  color: var(--memphis-dark);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.memphis-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--memphis-dark);
+}
+
+.memphis-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--memphis-dark);
+}
+
+.memphis-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 主按钮 - 珊瑚红 */
+.memphis-btn-primary {
+  background: var(--memphis-primary);
+  color: white;
+}
+
+.memphis-btn-primary:hover {
+  background: #ff5252;
+}
+
+/* 次按钮 - 薄荷绿 */
+.memphis-btn-secondary {
+  background: var(--memphis-secondary);
+  color: var(--memphis-dark);
+}
+
+.memphis-btn-secondary:hover {
+  background: #3dbeb6;
+}
+
+/* 强调按钮 - 明黄 */
+.memphis-btn-accent {
+  background: var(--memphis-accent1);
+  color: var(--memphis-dark);
+}
+
+.memphis-btn-accent:hover {
+  background: #ffd93d;
+}
+
+/* 电光紫按钮 */
+.memphis-btn-purple {
+  background: var(--memphis-accent5);
+  color: white;
+}
+
+.memphis-btn-purple:hover {
+  background: #5b4cdb;
+}
+
+/* 幽灵按钮 */
+.memphis-btn-ghost {
+  background: transparent;
+  box-shadow: none;
+}
+
+.memphis-btn-ghost:hover {
+  background: rgba(44, 62, 80, 0.05);
+  box-shadow: none;
+  transform: none;
+}
+
+/* 小尺寸按钮 */
+.memphis-btn-sm {
+  padding: 4px 12px;
+  font-size: 12px;
+  box-shadow: 2px 2px 0 var(--memphis-dark);
+}
+
+/* 大尺寸按钮 */
+.memphis-btn-lg {
+  padding: 12px 28px;
+  font-size: 16px;
+  box-shadow: 4px 4px 0 var(--memphis-dark);
+}
+
+/* ========================================
+   5. 输入框组件
+   ======================================== */
+.memphis-input {
+  width: 100%;
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+  border-radius: var(--memphis-radius);
+  padding: 10px 14px;
+  font-size: 14px;
+  background: white;
+  color: var(--memphis-dark);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.memphis-input:focus {
+  outline: none;
+  box-shadow: 3px 3px 0 var(--memphis-primary);
+}
+
+.memphis-input::placeholder {
+  color: #a0aec0;
+}
+
+/* 输入框变体 */
+.memphis-input-secondary:focus {
+  box-shadow: 3px 3px 0 var(--memphis-secondary);
+}
+
+.memphis-input-accent:focus {
+  box-shadow: 3px 3px 0 var(--memphis-accent1);
+}
+
+/* 文本域 */
+.memphis-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ========================================
+   6. 标签和徽章
+   ======================================== */
+.memphis-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border: 2px solid var(--memphis-dark);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: white;
+  color: var(--memphis-dark);
+}
+
+.memphis-tag-primary {
+  background: var(--memphis-primary);
+  color: white;
+}
+
+.memphis-tag-secondary {
+  background: var(--memphis-secondary);
+  color: var(--memphis-dark);
+}
+
+.memphis-tag-accent {
+  background: var(--memphis-accent1);
+  color: var(--memphis-dark);
+}
+
+/* 徽章 */
+.memphis-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--memphis-primary);
+  color: white;
+  border: 2px solid var(--memphis-dark);
+}
+
+.memphis-badge-success {
+  background: var(--memphis-success);
+}
+
+.memphis-badge-warning {
+  background: var(--memphis-warning);
+  color: var(--memphis-dark);
+}
+
+.memphis-badge-error {
+  background: var(--memphis-error);
+}
+
+.memphis-badge-info {
+  background: var(--memphis-info);
+}
+
+/* ========================================
+   7. 弹窗和遮罩
+   ======================================== */
+.memphis-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 62, 80, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.memphis-modal {
+  background: white;
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+  border-radius: var(--memphis-radius-lg);
+  box-shadow: 8px 8px 0 var(--memphis-dark);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* ========================================
+   8. Toast 通知
+   ======================================== */
+.memphis-toast {
+  padding: 12px 20px;
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+  border-radius: var(--memphis-radius);
+  box-shadow: 3px 3px 0 var(--memphis-dark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.memphis-toast-success {
+  background: var(--memphis-success);
+  color: white;
+}
+
+.memphis-toast-warning {
+  background: var(--memphis-warning);
+  color: var(--memphis-dark);
+}
+
+.memphis-toast-error {
+  background: var(--memphis-error);
+  color: white;
+}
+
+.memphis-toast-info {
+  background: var(--memphis-info);
+  color: var(--memphis-dark);
+}
+
+/* ========================================
+   9. 标题文字风格
+   ======================================== */
+.memphis-heading {
+  font-weight: 800;
+  color: var(--memphis-dark);
+  letter-spacing: -0.02em;
+}
+
+.memphis-heading-shadow {
+  text-shadow: 2px 2px 0 var(--memphis-primary);
+}
+
+.memphis-heading-xl {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.memphis-heading-lg {
+  font-size: 1.875rem;
+  line-height: 1.3;
+}
+
+.memphis-heading-md {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+/* ========================================
+   10. 几何装饰伪元素工具类
+   ======================================== */
+
+/* 圆形装饰 */
+.memphis-decor-circle {
+  position: relative;
+}
+
+.memphis-decor-circle::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--memphis-accent1);
+  border: 2px solid var(--memphis-dark);
+  top: -8px;
+  right: -8px;
+  z-index: 1;
+}
+
+/* 三角形装饰 */
+.memphis-decor-triangle {
+  position: relative;
+}
+
+.memphis-decor-triangle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid var(--memphis-secondary);
+  top: -12px;
+  left: -12px;
+  z-index: 1;
+}
+
+/* 波浪线/锯齿装饰 */
+.memphis-decor-zigzag {
+  position: relative;
+}
+
+.memphis-decor-zigzag::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(135deg, var(--memphis-primary) 25%, transparent 25%) -10px 0,
+              linear-gradient(225deg, var(--memphis-primary) 25%, transparent 25%) -10px 0,
+              linear-gradient(315deg, var(--memphis-primary) 25%, transparent 25%),
+              linear-gradient(45deg, var(--memphis-primary) 25%, transparent 25%);
+  background-size: 16px 8px;
+}
+
+/* 方块装饰 */
+.memphis-decor-square {
+  position: relative;
+}
+
+.memphis-decor-square::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--memphis-primary);
+  border: 2px solid var(--memphis-dark);
+  transform: rotate(15deg);
+  top: -6px;
+  right: -6px;
+  z-index: 1;
+}
+
+/* ========================================
+   11. 分割线
+   ======================================== */
+.memphis-divider {
+  height: 3px;
+  background: var(--memphis-dark);
+  border: none;
+  margin: 24px 0;
+}
+
+.memphis-divider-dashed {
+  height: 0;
+  border: none;
+  border-top: 3px dashed var(--memphis-dark);
+  margin: 24px 0;
+}
+
+/* ========================================
+   12. 全局重置和基础样式
+   ======================================== */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--memphis-bg);
+  color: var(--memphis-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   13. 滚动条美化
+   ======================================== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--memphis-bg);
+  border-left: 2px solid var(--memphis-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--memphis-secondary);
+  border: 2px solid var(--memphis-dark);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--memphis-primary);
+}
+
+/* 横向滚动条 */
+::-webkit-scrollbar-corner {
+  background: var(--memphis-bg);
+}
+
+/* ========================================
+   14. 选择文本样式
+   ======================================== */
+::selection {
+  background: var(--memphis-accent1);
+  color: var(--memphis-dark);
+}
+
+/* ========================================
+   15. 动画关键帧
+   ======================================== */
+@keyframes memphis-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes memphis-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes memphis-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes memphis-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+/* 动画工具类 */
+.memphis-animate-bounce {
+  animation: memphis-bounce 0.6s ease-in-out infinite;
+}
+
+.memphis-animate-shake {
+  animation: memphis-shake 0.4s ease-in-out;
+}
+
+.memphis-animate-pulse {
+  animation: memphis-pulse 1.5s ease-in-out infinite;
+}
+
+.memphis-animate-wiggle {
+  animation: memphis-wiggle 0.5s ease-in-out;
+}
+
+/* ========================================
+   16. 实用工具类
+   ======================================== */
+.memphis-shadow {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-dark);
+}
+
+.memphis-shadow-primary {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-primary);
+}
+
+.memphis-shadow-secondary {
+  box-shadow: var(--memphis-shadow-offset) var(--memphis-shadow-offset) 0 var(--memphis-secondary);
+}
+
+.memphis-border {
+  border: var(--memphis-border-width) solid var(--memphis-dark);
+}
+
+.memphis-rounded {
+  border-radius: var(--memphis-radius);
+}
+
+.memphis-rounded-lg {
+  border-radius: var(--memphis-radius-lg);
+}

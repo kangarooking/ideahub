@@ -1,0 +1,90 @@
+# ===========================
+# IdeaHub .gitignore
+# ===========================
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# ----- Virtual Environments -----
+.venv/
+venv/
+env/
+ENV/
+
+# ----- Environment Variables -----
+.env
+!.env.example
+
+# ----- Database -----
+*.db
+*.db-journal
+*.sqlite3
+
+# ----- IDE / Editor -----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ----- Node.js -----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ----- Frontend Build -----
+ideahub_app/frontend/dist/
+
+# ----- Uploads & Runtime Data -----
+ideahub_app/uploads/
+ideahub_app/crawler_data/
+
+# ----- Python Tools -----
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ----- uv -----
+# Keep uv.lock for reproducibility, ignore cache
+.uv/
+
+# ----- Logs -----
+*.log
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+
+# ----- MediaCrawler Runtime -----
+MediaCrawler/data/
+MediaCrawler/browser_data/
+MediaCrawler/.env
+MediaCrawler/.venv/
+MediaCrawler/.ideahub_init_done
+
+# ----- Temporary / Debug -----
+temp_image/
+debug_tools/
+*.tmp
+
+# ----- Qoder IDE -----
+.qoder/
+
+# ----- E2E Test Screenshots -----
+浏览器E2E验证总结.png
+
+# ----- Screenshots (used in README, keep tracked) -----
+# 流程*.png files are intentionally tracked
